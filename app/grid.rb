@@ -6,12 +6,12 @@ class Grid
   CELL_WIDTH  = 15;
 
   def initialize
-    @height  = `$(window).height()`                   # Numeric!
-    @width   = `$(window).width()`                    # A Numeric too!
-    @canvas  = `document.getElementById(#{canvas_id})`
+    @height  = `$(window).height()`
+    @width   = `$(window).width()`
+    @canvas  = `document.getElementById(#{canvas_id})` 
     @context = `#{canvas}.getContext('2d')`
-    @max_x   = (height / CELL_HEIGHT).floor           # Defines the max limits
-    @max_y   = (width / CELL_WIDTH).floor             # of the grid
+    @max_x   = (height / CELL_HEIGHT).floor
+    @max_y   = (width / CELL_WIDTH).floor
     @state   = blank_state
     @seed    = []
     draw_canvas
@@ -57,7 +57,7 @@ class Grid
       fill_cell(cell[0], cell[1]) if liveness == 1
     end
   end
-
+  
   def get_cursor_position(event)
     if (event.page_x && event.page_y)
       x = event.page_x;
@@ -70,7 +70,7 @@ class Grid
 
     x -= `#{canvas}.offsetLeft`
     y -= `#{canvas}.offsetTop`
-
+   
     x = (x / CELL_WIDTH).floor
     y = (y / CELL_HEIGHT).floor
 
@@ -110,8 +110,6 @@ class Grid
     end
   end
 
-  # Ctrl+D displays a demo of the Glider Gun:
-  # http://en.wikipedia.org/wiki/File:Game_of_life_glider_gun.svg
   def add_demo_event_listener
     Document.on :keypress do |event|
       if ctrl_d_pressed?(event)
@@ -138,3 +136,5 @@ class Grid
   end
 
 end
+
+class Coordinates < OpenStruct; end
