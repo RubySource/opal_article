@@ -1,0 +1,1 @@
+class Coordinates < OpenStruct; end
