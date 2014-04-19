@@ -64,8 +64,8 @@ class Grid
       y = event.page_y;
     else
       doc = Opal.Document[0]
-      x = e[:clientX] + doc.scrollLeft + doc.documentElement.scrollLeft;
-      y = e[:clientY] + doc.body.scrollTop + doc.documentElement.scrollTop;
+      x = event[:clientX] + doc.scrollLeft + doc.documentElement.scrollLeft;
+      y = event[:clientY] + doc.body.scrollTop + doc.documentElement.scrollTop;
     end
 
     x -= `#{canvas}.offsetLeft`
